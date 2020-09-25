@@ -1,0 +1,106 @@
+           ############# Comandos GIT ############# 
+
+Estrutura do GIT
+	
+	- Master		
+		- Develop
+			- Features
+			- Releases
+			- Hotfix
+
+=============================================================
+
+# Features
+
+- Develop -> Feature
+
+* na branch develop vamos criar uma feature
+	
+	git checkout develop
+	git checkout -b feature/featurenova
+
+
+- Feature -> Develop
+
+* juntar o conteudo da nova feature na branch develop
+
+	git checkout develop
+	git checkout merge feature/featurenova
+
+
+Develop -> Release -> Master
+
+	git checkout develop
+	git checkout -b release/1.0.0
+	git checkout master
+	git merge release/1.0.0
+
+=============================================================
+
+
+# Hotfix
+
+* O hotfix é aplicado na master e na develop devido a urgência de uma correção, apos a correção o branch é removido
+
+ - Hotfix -> Master
+ 		  -> Develop
+
+ 	git checkout master
+ 	git merge hotfix/recurso
+ 	git checkout develop
+ 	git merge hotfix/recurso
+ 	git branch -D hotfix/recurso
+
+=============================================================
+
+
+
+              ############### Git flow ###############
+
+* Iniciar um projeto usando gitflow
+
+ 	git flow init
+
+
+=============================================================
+
+# Features
+
+
+- Develop -> Feature
+
+* na branch develop vamos criar uma feature
+	
+	git flow feature start feature/featurenova
+
+
+- Feature -> Develop
+
+* juntar o conteudo da nova feature na branch develop
+
+	git flow feature finish feature/featurenova
+
+
+Develop -> Release -> Master
+
+	git flow release start 1.0.0
+	git flow release finish '1.0.0'
+	
+ * no finish ele automaticamente faz o merge para o master
+
+=============================================================
+
+# Hotfix
+
+* O hotfix é aplicado na master e na develop devido a urgência de uma correção, apos a correção o branch é removido
+
+ - Hotfix -> Master
+ 		  -> Develop
+
+ 	
+ 	git flow hotfix start hotfix/recurso
+ 	git flow hotfix finish hotfix/recurso
+
+* no finish ele automaticamente faz o merge para o master e para o develop
+
+=============================================================
